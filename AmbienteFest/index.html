@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos y Fiestas - Catálogo de Servicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Cotillón animado -->
+    <div class="cotillon" id="cotillon"></div>
+
+    <!-- ================= NAVBAR ================= -->
+    <!-- Barra de navegación principal: logo, enlaces y carrito -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/img/logo.jpeg" alt="Logo" class="logo-navbar">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item position-relative">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#carritoModal">
+                            <i class="bi bi-cart-fill"></i> Carrito
+                            <span id="carritoBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================= HERO / BANNER ================= -->
+    <!-- Sección principal destacada con imagen y llamado a la acción -->
+    <section class="bg-dark text-white text-center py-5 banner-principal">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Organiza tu Evento Perfecto</h1>
+            <p class="lead">Encuentra y cotiza servicios para todo tipo de eventos: matrimonios, cumpleaños, baby showers, graduaciones, fiestas temáticas y más.</p>
+            <a href="#servicios" class="btn btn-primary btn-lg mt-3">Ver Servicios</a>
+        </div>
+    </section>
+
+    <!-- ================= CATÁLOGO DE SERVICIOS Y FILTROS ================= -->
+    <!-- Filtros y listado de servicios por categoría -->
+    <section id="servicios" class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <h2 class="h4">Filtrar Servicios</h2>
+                    <form id="filtrosServicios">
+                        <div class="mb-2">
+                            <label class="form-label">Tipo de Evento</label>
+                            <select class="form-select" name="categoria">
+                                <option value="">Todos</option>
+                                <option>Matrimonios</option>
+                                <option>Cumpleaños</option>
+                                <option>Baby Shower</option>
+                                <option>Halloween</option>
+                                <option>Navidad</option>
+                                <option>Graduaciones</option>
+                                <option>Titulaciones</option>
+                                <option>Año Nuevo</option>
+                                <option>Corporativos</option>
+                                <option>Deportivos</option>
+                                <option>Laborales</option>
+                                <option>Bautizos</option>
+                                <option>Otros</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Precio Máximo</label>
+                            <input type="range" class="form-range" min="0" max="1000000" step="10000" name="precio" id="precioFiltro">
+                            <span id="precioFiltroValor">$1.000.000</span>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Valoración</label>
+                            <select class="form-select" name="valoracion">
+                                <option value="">Todas</option>
+                                <option value="5">★★★★★</option>
+                                <option value="4">★★★★☆ o más</option>
+                                <option value="3">★★★☆☆ o más</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary w-100">Aplicar Filtros</button>
+                    </form>
+                </div>
+                <div class="col-md-9">
+                    <h2 class="h4 mb-3">Catálogo de Servicios</h2>
+                    <div class="row" id="listaServicios">
+                        <!-- Aquí se cargarán los servicios dinámicamente con JS -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <img src="assets/img/servicio1.jpg" class="card-img-top" alt="Servicio 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">DJ para Matrimonios</h5>
+                                    <p class="card-text">Animación musical profesional para tu boda.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-success">$250.000</span>
+                                        <span class="ms-2 text-warning">★★★★☆ (24)</span>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detalleServicioModal">Ver Detalle</button>
+                                    <button class="btn btn-outline-success btn-sm ms-2">Agregar al Carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Más servicios... -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= NOSOTROS ================= -->
+    <section id="nosotros" class="py-5 bg-white border-bottom">
+        <div class="container">
+            <h2 class="h3 fw-bold mb-5 text-fucsia text-center">Nosotros</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="bg-light rounded-4 p-4 shadow-sm">
+                        <h4 class="fw-bold mb-2 text-fucsia"><i class="bi bi-globe2"></i> Nuestra Plataforma</h4>
+                        <p class="mb-2">En <strong>AmbienteFest</strong> conectamos a quienes buscan servicios para sus eventos con una red de proveedores, emprendedores y empresarios que desean expandir su trabajo y llegar a más personas.</p>
+                        <p class="mb-2">Nuestra misión es ofrecer oportunidades a nuevos emprendimientos y negocios consolidados, permitiendo que cada proveedor pueda mostrar su talento y profesionalismo. Así, facilitamos el acceso a soluciones confiables, accesibles y de calidad para todo tipo de fiestas y celebraciones.</p>
+                        <p class="mb-2">Valoramos la cercanía, la empatía y la colaboración, para que cada usuario encuentre la mejor opción para su evento y cada proveedor pueda crecer junto a nosotros.</p>
+                        <p class="mb-0 text-muted" style="font-size:1em;">Fundado por Antonella Aedo y Karen Fuentealba.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MODAL DETALLE DE SERVICIO ================= -->
+    <!-- Modal para mostrar detalle de cada servicio y proveedor -->
+    <div class="modal fade" id="detalleServicioModal" tabindex="-1" aria-labelledby="detalleServicioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalleServicioLabel">Detalle del Servicio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="assets/img/servicio1.jpg" class="img-fluid rounded" alt="Detalle Servicio">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>DJ para Matrimonios</h4>
+                            <p>Animación musical profesional para bodas. Incluye equipo de sonido, luces y repertorio personalizado.</p>
+                            <ul>
+                                <li>Duración: 5 horas</li>
+                                <li>Equipo necesario: Espacio para DJ y toma de corriente</li>
+                                <li>Disponibilidad: Sábados y Domingos</li>
+                            </ul>
+                            <div class="mb-2">
+                                <span class="badge bg-success">$250.000</span>
+                                <span class="ms-2 text-warning">★★★★☆ (24)</span>
+                            </div>
+                            <button class="btn btn-success">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL CARRITO DE COMPRAS ================= -->
+    <!-- Modal para mostrar y gestionar el carrito de compras -->
+    <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carritoLabel">Carrito de Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group mb-3" id="carritoLista">
+                        <!-- Servicios agregados al carrito -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            DJ para Matrimonios
+                            <span>$250.000</span>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
+                        </li>
+                        <!-- Más items... -->
+                    </ul>
+                    <div class="d-flex justify-content-between">
+                        <span>Total:</span>
+                        <strong>$250.000</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Impuestos:</span>
+                        <strong>$47.500</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Precio Final:</span>
+                        <strong>$297.500</strong>
+                    </div>
+                    <button class="btn btn-primary w-100">Proceder al Pago</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL LOGIN/REGISTRO ================= -->
+    <!-- Modal para login y registro de usuarios -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginLabel">Iniciar Sesión / Registrarse</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+                        <div class="text-center mt-2">
+                            <a href="#">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <hr>
+                        <button type="button" class="btn btn-outline-secondary w-100 mb-2">Registrarse con Email</button>
+                        <button type="button" class="btn btn-outline-primary w-100">Continuar con Google</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= BLOG INFORMATIVO ================= -->
+    <!-- Sección de blog para artículos y tendencias -->
+    <section id="blog" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="h4 mb-4">Blog Informativo</h2>
+            <div class="row" id="blogArticulos">
+                <!-- Blog 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                                            <img src="assets/img/BlogTendencias.png" class="card-img-top" alt="Decoración 2025">
+                        <div class="card-body">
+                            <h5 class="card-title">Tendencias en Decoración para Eventos 2025</h5>
+                            <p class="card-text">Descubre las últimas tendencias en decoración para que tu evento sea inolvidable.</p>
+                            <p class="mb-1"><small class="text-muted">Por: Administrador</small></p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Leer más</a>
+                            <div class="mt-2">
+                                <input type="text" class="form-control form-control-sm" placeholder="Escribe un comentario...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="assets/img/BlogBanquetería.png" class="card-img-top blog-img-fixed" alt="Banquetería">
+                        <div class="card-body">
+                            <h5 class="card-title">Banquetería: Sabores que Sorprenden</h5>
+                            <p class="card-text">Ideas y consejos para elegir el mejor catering para tu evento.</p>
+                            <p class="mb-1"><small class="text-muted">Por: Proveedor - Banquetería Gourmet Spa</small></p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Leer más</a>
+                            <div class="mt-2">
+                                <input type="text" class="form-control form-control-sm" placeholder="Escribe un comentario...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="assets/img/BlogAnimaciónInfantil.png" class="card-img-top blog-img-fixed" alt="Animación Infantil">
+                        <div class="card-body">
+                            <h5 class="card-title">Animación Infantil: Diversión Garantizada</h5>
+                            <p class="card-text">Cómo elegir animadores y juegos para cumpleaños y fiestas infantiles.</p>
+                            <p class="mb-1"><small class="text-muted">Por: Proveedor - Animaciones Infantiles Alegría</small></p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Leer más</a>
+                            <div class="mt-2">
+                                <input type="text" class="form-control form-control-sm" placeholder="Escribe un comentario...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog 4 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="assets/img/BlogAñoNuevo.png" class="card-img-top blog-img-fixed" alt="Fiestas de Año Nuevo">
+                        <div class="card-body">
+                            <h5 class="card-title">Fiestas de Año Nuevo: Ideas para Celebrar</h5>
+                            <p class="card-text">Tips para organizar una fiesta de año nuevo inolvidable.</p>
+                            <p class="mb-1"><small class="text-muted">Por: Administrador</small></p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Leer más</a>
+                            <div class="mt-2">
+                                <input type="text" class="form-control form-control-sm" placeholder="Escribe un comentario...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog 5 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="assets/img/BlogMago.png" class="card-img-top blog-img-fixed" alt="Magos y Shows">
+                        <div class="card-body">
+                            <h5 class="card-title">Magos y Shows: Sorpresa para tus Invitados</h5>
+                            <p class="card-text">El valor de la magia y el espectáculo en eventos familiares y corporativos.</p>
+                            <p class="mb-1"><small class="text-muted">Por: Proveedor - Magia y Sonrisas</small></p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Leer más</a>
+                            <div class="mt-2">
+                                <input type="text" class="form-control form-control-sm" placeholder="Escribe un comentario...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog 6 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="assets/img/BlogEventoCorp.png" class="card-img-top blog-img-fixed" alt="Eventos Corporativos">
+                        <div class="card-body">
+                            <h5 class="card-title">Eventos Corporativos: Claves del Éxito</h5>
+                            <p class="card-text">Cómo planificar eventos empresariales exitosos y memorables.</p>
+                            <p class="mb-1"><small class="text-muted">Por: Administrador</small></p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Leer más</a>
+                            <div class="mt-2">
+                                <input type="text" class="form-control form-control-sm" placeholder="Escribe un comentario...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FORMULARIO DE CONTACTO ================= -->
+    <!-- Formulario para contacto y consultas de usuarios -->
+    <section id="contacto" class="py-5">
+        <div class="container">
+            <h2 class="h4 mb-4">Contáctanos</h2>
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Nombre" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" rows="4" placeholder="Mensaje" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER PROFESIONAL ================= -->
+    <footer class="footer-ambiente bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- Servicios -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="fw-bold text-fucsia mb-3"><i class="bi bi-briefcase-fill"></i> Servicios</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#servicios" class="text-white-50 text-decoration-none">Catálogo de Servicios</a></li>
+                        <li><a href="#blog" class="text-white-50 text-decoration-none">Blog y Tendencias</a></li>
+        
+                      
+                    </ul>
+                </div>
+                <!-- Empresa -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="fw-bold text-fucsia mb-3"><i class="bi bi-building"></i> Empresa</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#nosotros" class="text-white-50 text-decoration-none">Sobre Nosotros</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none" data-bs-toggle="collapse" data-bs-target="#faqFooter" aria-expanded="false" aria-controls="faqFooter">FAQ <i class="bi bi-chevron-down small"></i></a></li>
+                        <div class="collapse" id="faqFooter">
+                            <div class="card card-body bg-light text-dark mt-2">
+                                <strong>¿Quiénes pueden ofrecer servicios?</strong>
+                                <p class="mb-2">Cualquier emprendedor, empresa o profesional del rubro de eventos puede registrarse y publicar sus servicios en nuestra plataforma.</p>
+                                <strong>¿Cómo se contacta a los proveedores?</strong>
+                                <p class="mb-2">Una vez aceptado los términos y condiciones de la compra del servicio se enviará a su correo los datos del proveedor.</p>
+                                <strong>¿Qué beneficios tiene publicar aquí?</strong>
+                                <p class="mb-2">Mayor visibilidad, acceso a nuevos clientes y una vitrina profesional para tu emprendimiento o empresa.</p>
+                                <strong>¿Qué beneficios tienes al comprar aquí?</strong>
+                                <p class="mb-0">En esta página encontrarás todos los servicios necesarios para que tu evento o fiesta sea un éxito. Nos especializamos en ofrecer soluciones completas, confiables y de alta calidad, con la experiencia y profesionalismo que tu celebración merece.</p>
+                            </div>
+                        </div>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Términos y Condiciones</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <!-- Contacto -->
+                <div class="col-md-4">
+                    <h5 class="fw-bold text-fucsia mb-3"><i class="bi bi-envelope-fill"></i> Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt-fill text-fucsia"></i> Santiago, Chile</li>
+                        <li><i class="bi bi-envelope-open-fill text-fucsia"></i> <a href="mailto:contacto@ambientefest.cl" class="text-white-50 text-decoration-none">contacto@ambientefest.cl</a></li>
+                        <li><i class="bi bi-phone-fill text-fucsia"></i> +56 9 1234 5678</li>
+                        <li class="mt-2"><a href="#contacto" class="btn btn-outline-primary btn-sm">Formulario de Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="row">
+                <div class="col text-center">
+                    <small class="text-white-50">&copy; 2025 AmbienteFest. Todos los derechos reservados.</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <!-- Bootstrap JS, iconos y scripts propios -->
+    <!-- Futuro: agregar scripts para validación de formularios, login, blog, etc. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="assets/js/main.js"></script>
+</body>
+</html>

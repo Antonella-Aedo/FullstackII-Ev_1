@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Eventos y Fiestas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- NAVBAR ADMIN -->
+    <nav class="navbar navbar-expand-lg admin-navbar mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="bi bi-shield-lock-fill"></i> Panel Administrador <span class="fw-bold ambiente-nombre">| AmbienteFest</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNav" aria-controls="adminNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="adminNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#usuarios">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reportes">Reportes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- GESTIÓN DE SERVICIOS -->
+    <section class="admin-section container-fluid" id="servicios">
+        <h2 class="h4 mb-4">Gestión de Servicios</h2>
+        <button class="btn btn-admin mb-3" data-bs-toggle="modal" data-bs-target="#modalServicio"><i class="bi bi-plus-circle"></i> Nuevo Servicio</button>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Disponibilidad</th>
+                        <th>Proveedor</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Ejemplo de servicio pendiente de validación -->
+                    <tr>
+                        <td><img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=80&q=80" alt="Banquetería" class="img-servicio-admin"></td>
+                        <td>Banquetería Premium</td>
+                        <td>Matrimonios</td>
+                        <td>$800.000</td>
+                        <td>Disponible todo el año</td>
+                        <td>
+                            <div class="proveedor-info-admin">
+                                <strong>Usuario:</strong> proveedor1<br>
+                                <strong>Email:</strong> proveedor1@email.com<br>
+                                <span class="badge bg-info text-dark">Proveedor</span>
+                            </div>
+                        </td>
+                        <td><span class="badge badge-pendiente">Pendiente</span></td>
+                        <td>
+                            <button class="btn btn-success btn-sm" title="Aprobar"><i class="bi bi-check-circle"></i></button>
+                            <button class="btn btn-danger btn-sm" title="Rechazar"><i class="bi bi-x-circle"></i></button>
+                            <button class="btn btn-warning btn-sm" title="Editar"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-secondary btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                    <!-- Ejemplo de servicio aprobado -->
+                    <tr>
+                        <td><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=80&q=80" alt="Animador" class="img-servicio-admin"></td>
+                        <td>Animador Infantil</td>
+                        <td>Cumpleaños</td>
+                        <td>$120.000</td>
+                        <td>Fines de semana</td>
+                        <td>
+                            <div class="proveedor-info-admin">
+                                <strong>Usuario:</strong> proveedor2<br>
+                                <strong>Email:</strong> animador@email.com<br>
+                                <span class="badge bg-info text-dark">Proveedor</span>
+                            </div>
+                        </td>
+                        <td><span class="badge badge-aprobado">Aprobado</span></td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" title="Editar"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-secondary btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                    <!-- Ejemplo de servicio rechazado -->
+                    <tr>
+                        <td><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=80&q=80" alt="Decoración" class="img-servicio-admin"></td>
+                        <td>Decoración Halloween</td>
+                        <td>Halloween</td>
+                        <td>$150.000</td>
+                        <td>Octubre</td>
+                        <td>
+                            <div class="proveedor-info-admin">
+                                <strong>Usuario:</strong> proveedor3<br>
+                                <strong>Email:</strong> deco@email.com<br>
+                                <span class="badge bg-info text-dark">Proveedor</span>
+                            </div>
+                        </td>
+                        <td><span class="badge badge-rechazado">Rechazado</span></td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" title="Editar"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-secondary btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                    <!-- Más servicios... -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- MODAL NUEVO/EDITAR SERVICIO -->
+    <div class="modal fade" id="modalServicio" tabindex="-1" aria-labelledby="modalServicioLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalServicioLabel">Nuevo Servicio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-2">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" rows="2" required></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Precio</label>
+                            <input type="number" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Disponibilidad</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Categoría</label>
+                            <select class="form-select" required>
+                                <option>Matrimonios</option>
+                                <option>Cumpleaños</option>
+                                <option>Baby Shower</option>
+                                <option>Halloween</option>
+                                <option>Navidad</option>
+                                <option>Graduaciones</option>
+                                <option>Titulaciones</option>
+                                <option>Año Nuevo</option>
+                                <option>Corporativos</option>
+                                <option>Deportivos</option>
+                                <option>Laborales</option>
+                                <option>Bautizos</option>
+                                <option>Otros</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Imagen (URL libre de derechos)</label>
+                            <input type="url" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-admin w-100">Guardar Servicio</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GESTIÓN DE USUARIOS -->
+    <section class="admin-section container-fluid" id="usuarios">
+        <h2 class="h4 mb-4">Gestión de Usuarios</h2>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Juan Pérez</td>
+                        <td>juanperez@email.com</td>
+                        <td><span class="badge bg-primary">Administrador</span></td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm" title="Cambiar Rol"><i class="bi bi-person-badge"></i></button>
+                            <button class="btn btn-danger btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>María López</td>
+                        <td>maria@email.com</td>
+                        <td><span class="badge bg-success">Cliente</span></td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm" title="Cambiar Rol"><i class="bi bi-person-badge"></i></button>
+                            <button class="btn btn-danger btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                    <!-- Más usuarios... -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- REPORTES Y ESTADÍSTICAS -->
+    <section class="admin-section container-fluid" id="reportes">
+        <h2 class="h4 mb-4">Reportes y Estadísticas</h2>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="p-3 bg-light rounded shadow-sm">
+                    <h5 class="mb-1">Servicios Validados</h5>
+                    <p class="display-6 fw-bold text-success">12</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="p-3 bg-light rounded shadow-sm">
+                    <h5 class="mb-1">Ventas Totales</h5>
+                    <p class="display-6 fw-bold text-primary">$3.200.000</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="p-3 bg-light rounded shadow-sm">
+                    <h5 class="mb-1">Usuarios Registrados</h5>
+                    <p class="display-6 fw-bold text-info">58</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="p-3 bg-light rounded shadow-sm">
+                    <h5 class="mb-2">Calificaciones de Servicios</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Banquetería Premium
+                            <span class="badge bg-success">4.8</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Animador Infantil
+                            <span class="badge bg-success">4.6</span>
+                        </li>
+                        <!-- Más calificaciones... -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-3 bg-light rounded shadow-sm">
+                    <h5 class="mb-2">Reservas Recientes</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            María López
+                            <span class="badge bg-primary">Banquetería Premium</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Juan Pérez
+                            <span class="badge bg-primary">Animador Infantil</span>
+                        </li>
+                        <!-- Más reservas... -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>
